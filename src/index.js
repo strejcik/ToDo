@@ -98,7 +98,7 @@ function KanbanColumn(name, id=ID(), date = new Date()) {
       columnEdit.value = columnTitle.innerHTML;
 
       columnEdit.onkeydown = function(event) {
-        if (event.key == 'Enter') {
+        if (event.key === 'Enter') {
           this.blur();
         }
       };
@@ -204,6 +204,7 @@ function KanbanCard(desc, cardId=ID(), columnId=ID()) {
   this.element = createCardElement();
 
   function createCardElement() {
+    let area = document.createElement('textarea');
     let kanbanCard = document.createElement("li");
     kanbanCard.classList += "kanban-card-element";
     let removeCardBtn = document.createElement("button");
@@ -225,7 +226,6 @@ function KanbanCard(desc, cardId=ID(), columnId=ID()) {
     }
 
     function editStart() {
-      area = document.createElement('textarea');
       area.className = 'kanban-card-edit';
       area.value = kanbanCardDesc.innerHTML;
 
@@ -421,4 +421,4 @@ function App(component) {
 
 let kTable = new KanbanTable();
 
-let app = new App(kTable);
+new App(kTable);
